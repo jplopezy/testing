@@ -1,0 +1,5528 @@
+components:
+  schemas:
+    Account:
+      properties:
+        account_creation_time:
+          format: date-time
+          title: Account Creation Time
+          type: string
+        analytics_id:
+          format: uuid
+          title: Analytics Id
+          type: string
+        completed_questionnaire:
+          title: Completed Questionnaire
+          type: boolean
+        ehr_id:
+          title: Ehr Id
+          type: string
+        enrollment_validator:
+          title: Enrollment Validator
+          type: string
+        full_name:
+          title: Full Name
+          type: string
+        guide_id:
+          title: Guide Id
+          type: integer
+        has_registration_code:
+          title: Has Registration Code
+          type: boolean
+        id:
+          title: Id
+          type: integer
+        nickname:
+          title: Nickname
+          type: string
+        preferred_communication:
+          $ref: '#/components/schemas/CommunicationType'
+        preferred_language:
+          $ref: '#/components/schemas/Language'
+        pregnancy_start_date:
+          format: date
+          title: Pregnancy Start Date
+          type: string
+        primary_clinic:
+          title: Primary Clinic
+          type: string
+        signup_code:
+          title: Signup Code
+          type: string
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        timezone_offset:
+          title: Timezone Offset
+          type: integer
+      required:
+      - id
+      - status
+      title: Account
+      type: object
+    AccountQuestionnaireResponse:
+      properties:
+        account_id:
+          title: Account Id
+          type: integer
+        id:
+          title: Id
+          type: integer
+        language:
+          title: Language
+          type: string
+        questionnaire_id:
+          title: Questionnaire Id
+          type: string
+        response:
+          title: Response
+          type: object
+        timestamp:
+          format: date-time
+          title: Timestamp
+          type: string
+        version:
+          title: Version
+          type: integer
+      required:
+      - id
+      - account_id
+      - timestamp
+      - questionnaire_id
+      - response
+      - version
+      - language
+      title: AccountQuestionnaireResponse
+      type: object
+    AccountStatus:
+      description: Account Status Enum
+      enum:
+      - ACTIVE
+      - _DEPRECATED_DISABLED
+      - COMPLETE
+      - OPTED_OUT
+      title: AccountStatus
+      type: string
+    AccountWithWeek:
+      description: Composable class for storing pregnancy week.
+      properties:
+        account_creation_time:
+          format: date-time
+          title: Account Creation Time
+          type: string
+        analytics_id:
+          format: uuid
+          title: Analytics Id
+          type: string
+        completed_questionnaire:
+          title: Completed Questionnaire
+          type: boolean
+        day:
+          default: 0
+          title: Day
+          type: integer
+        ehr_id:
+          title: Ehr Id
+          type: string
+        enrollment_validator:
+          title: Enrollment Validator
+          type: string
+        full_name:
+          title: Full Name
+          type: string
+        guide_id:
+          title: Guide Id
+          type: integer
+        hasHadPrevPregnancies:
+          title: Hashadprevpregnancies
+          type: boolean
+        has_registration_code:
+          title: Has Registration Code
+          type: boolean
+        id:
+          title: Id
+          type: integer
+        nickname:
+          title: Nickname
+          type: string
+        preferred_communication:
+          $ref: '#/components/schemas/CommunicationType'
+        preferred_language:
+          $ref: '#/components/schemas/Language'
+        pregnancy_start_date:
+          format: date
+          title: Pregnancy Start Date
+          type: string
+        primary_clinic:
+          title: Primary Clinic
+          type: string
+        shouldRequestNameDob:
+          title: Shouldrequestnamedob
+          type: boolean
+        showCFWHBanner:
+          title: Showcfwhbanner
+          type: boolean
+        showDemoBanner:
+          title: Showdemobanner
+          type: boolean
+        signup_code:
+          title: Signup Code
+          type: string
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        timezone_offset:
+          title: Timezone Offset
+          type: integer
+        week:
+          default: 0
+          title: Week
+          type: integer
+      required:
+      - id
+      - status
+      title: AccountWithWeek
+      type: object
+    Activity:
+      description: Activity Type
+      enum:
+      - RARELY
+      - ONCE_WEEKLY
+      - MANY_WEEKLY
+      title: Activity
+      type: string
+    AlertFlag:
+      description: The three flags to show alerts for measurements.
+      enum:
+      - good
+      - bad
+      - unknown
+      - critical
+      title: AlertFlag
+      type: string
+    AlertInfo:
+      properties:
+        flag:
+          $ref: '#/components/schemas/AlertFlag'
+        reason:
+          $ref: '#/components/schemas/AlertReason'
+      required:
+      - flag
+      title: AlertInfo
+      type: object
+    AlertReason:
+      description: An enumeration.
+      enum:
+      - TOO_LOW
+      - TOO_HIGH
+      title: AlertReason
+      type: string
+    AppLoginGuidePatientInformation:
+      description: Class to store patients App Login Information to the Guide Portal
+      properties:
+        app_login_notes:
+          title: App Login Notes
+          type: string
+        app_login_reminder_count:
+          title: App Login Reminder Count
+          type: integer
+        first_time_login:
+          title: First Time Login
+          type: boolean
+        id:
+          title: Id
+          type: integer
+      required:
+      - id
+      - app_login_reminder_count
+      - first_time_login
+      title: AppLoginGuidePatientInformation
+      type: object
+    Article:
+      description: Represents a published article to display to the user.
+      properties:
+        article_type:
+          title: Article Type
+          type: string
+        asset_image:
+          title: Asset Image
+          type: string
+        body:
+          title: Body
+          type: string
+        id:
+          title: Id
+          type: string
+        title:
+          title: Title
+          type: string
+      required:
+      - id
+      - title
+      - article_type
+      title: Article
+      type: object
+    BloodPressureMeasurement:
+      properties:
+        dia:
+          title: Dia
+          type: number
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        pulse:
+          title: Pulse
+          type: number
+        reading_id:
+          title: Reading Id
+          type: string
+        sys:
+          title: Sys
+          type: number
+      required:
+      - measurement_time
+      - sys
+      - dia
+      title: BloodPressureMeasurement
+      type: object
+    BloodPressureMeasurementWithWeek:
+      description: Composable class for storing pregnancy week.
+      properties:
+        day:
+          default: 0
+          title: Day
+          type: integer
+        dia:
+          title: Dia
+          type: number
+        dia_alert:
+          $ref: '#/components/schemas/AlertInfo'
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        pulse:
+          title: Pulse
+          type: number
+        pulse_alert:
+          $ref: '#/components/schemas/AlertInfo'
+        reading_id:
+          title: Reading Id
+          type: string
+        sys:
+          title: Sys
+          type: number
+        sys_alert:
+          $ref: '#/components/schemas/AlertInfo'
+        week:
+          default: 0
+          title: Week
+          type: integer
+      required:
+      - measurement_time
+      - sys
+      - dia
+      title: BloodPressureMeasurementWithWeek
+      type: object
+    BloodSugarMeasurement:
+      properties:
+        glucose:
+          title: Glucose
+          type: number
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        notes:
+          title: Notes
+          type: string
+        reading_id:
+          title: Reading Id
+          type: string
+        time_period:
+          $ref: '#/components/schemas/TimePeriod'
+      required:
+      - measurement_time
+      - glucose
+      title: BloodSugarMeasurement
+      type: object
+    BloodSugarMeasurementWithWeek:
+      description: Composable class for storing pregnancy week.
+      properties:
+        day:
+          default: 0
+          title: Day
+          type: integer
+        glucose:
+          title: Glucose
+          type: number
+        glucose_alert:
+          $ref: '#/components/schemas/AlertInfo'
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        notes:
+          title: Notes
+          type: string
+        reading_id:
+          title: Reading Id
+          type: string
+        time_period:
+          $ref: '#/components/schemas/TimePeriod'
+        week:
+          default: 0
+          title: Week
+          type: integer
+      required:
+      - measurement_time
+      - glucose
+      title: BloodSugarMeasurementWithWeek
+      type: object
+    CommunicationType:
+      description: Preferred Communication Type Enum
+      enum:
+      - EMAIL
+      - TEXT
+      - PHONE_CALL
+      title: CommunicationType
+      type: string
+    Degree:
+      description: Degree Type
+      enum:
+      - NO_SCHOOLING
+      - HIGH_SCHOOL
+      - ASSOCIATE
+      - BACHELOR
+      - MASTER
+      - DOCTORATE
+      title: Degree
+      type: string
+    DeliveryStatus:
+      description: An enumeration.
+      enum:
+      - PREPARTUM
+      - INTERRUPTED
+      - DELIVERED
+      title: DeliveryStatus
+      type: string
+    Demographics:
+      properties:
+        address_1:
+          title: Address 1
+          type: string
+        address_2:
+          title: Address 2
+          type: string
+        city:
+          title: City
+          type: string
+        degree:
+          $ref: '#/components/schemas/Degree'
+        dob:
+          format: date-time
+          title: Dob
+          type: string
+        email:
+          title: Email
+          type: string
+        phone_number:
+          title: Phone Number
+          type: string
+        race_asian:
+          title: Race Asian
+          type: boolean
+        race_black:
+          title: Race Black
+          type: boolean
+        race_hispanic:
+          title: Race Hispanic
+          type: boolean
+        race_native_american:
+          title: Race Native American
+          type: boolean
+        race_other:
+          title: Race Other
+          type: boolean
+        race_pacific_islander:
+          title: Race Pacific Islander
+          type: boolean
+        race_prefer_not_to_answer:
+          title: Race Prefer Not To Answer
+          type: boolean
+        race_white:
+          title: Race White
+          type: boolean
+        ssn:
+          title: Ssn
+          type: integer
+        state:
+          title: State
+          type: string
+        zipcode:
+          title: Zipcode
+          type: string
+      title: Demographics
+      type: object
+    Feedback:
+      properties:
+        feedback:
+          title: Feedback
+          type: string
+        recommend:
+          title: Recommend
+          type: integer
+        submitted_time:
+          format: date-time
+          title: Submitted Time
+          type: string
+      required:
+      - submitted_time
+      - recommend
+      title: Feedback
+      type: object
+    Guide:
+      description: A guide and the information that might be relevant to Admins viewing
+        them.
+      properties:
+        assigned_patients:
+          title: Assigned Patients
+          type: integer
+        email:
+          title: Email
+          type: string
+        engaged_patients:
+          title: Engaged Patients
+          type: integer
+        first_name:
+          title: First Name
+          type: string
+        id:
+          title: Id
+          type: integer
+        last_action:
+          $ref: '#/components/schemas/backend__schemas__StaffAction'
+        last_name:
+          title: Last Name
+          type: string
+        phone_number:
+          title: Phone Number
+          type: string
+        practices:
+          items:
+            $ref: '#/components/schemas/Practice'
+          title: Practices
+          type: array
+      required:
+      - id
+      title: Guide
+      type: object
+    GuideViewPatient:
+      description: Contains patient attributes visible to guides in the guide dashboard
+      properties:
+        account_creation_time:
+          format: date
+          title: Account Creation Time
+          type: string
+        age:
+          title: Age
+          type: integer
+        app_login_stat:
+          title: App Login Stat
+          type: boolean
+        babies_expected:
+          title: Babies Expected
+          type: integer
+        delivery_status:
+          $ref: '#/components/schemas/DeliveryStatus'
+        devices:
+          items:
+            $ref: '#/components/schemas/RemotePatientMonitoringDevice'
+          title: Devices
+          type: array
+        dob:
+          format: date
+          title: Dob
+          type: string
+        email:
+          title: Email
+          type: string
+        full_name:
+          title: Full Name
+          type: string
+        guide_first_name:
+          title: Guide First Name
+          type: string
+        guide_id:
+          title: Guide Id
+          type: integer
+        guide_last_name:
+          title: Guide Last Name
+          type: string
+        id:
+          title: Id
+          type: integer
+        last_review:
+          $ref: '#/components/schemas/PatientReview'
+        last_visit_time:
+          format: date-time
+          title: Last Visit Time
+          type: string
+        metrics_stat:
+          title: Metrics Stat
+          type: boolean
+        phone_number:
+          title: Phone Number
+          type: string
+        practice_id:
+          title: Practice Id
+          type: integer
+        preferred_communication:
+          title: Preferred Communication
+          type: string
+        preferred_language:
+          title: Preferred Language
+          type: string
+        pregnancy_end_date:
+          format: date
+          title: Pregnancy End Date
+          type: string
+        pregnancy_start_date:
+          format: date
+          title: Pregnancy Start Date
+          type: string
+        previous_births:
+          title: Previous Births
+          type: integer
+        previous_pregnancies:
+          title: Previous Pregnancies
+          type: integer
+        review_time:
+          format: date-time
+          title: Review Time
+          type: string
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        videos_stat:
+          title: Videos Stat
+          type: boolean
+      required:
+      - id
+      title: GuideViewPatient
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    HealthInsurance:
+      description: Health Insurance Type
+      enum:
+      - MEDICARE
+      - MEDICAID
+      - ACA
+      - EMPLOYER
+      - PRIVATE
+      - NO_INSURANCE
+      title: HealthInsurance
+      type: string
+    Homepage:
+      properties:
+        bp_measurement_count_today:
+          title: Bp Measurement Count Today
+          type: integer
+        bs_measurement_count_today:
+          title: Bs Measurement Count Today
+          type: integer
+        mood_measurement_count_today:
+          title: Mood Measurement Count Today
+          type: integer
+        pod_points:
+          title: Pod Points
+          type: integer
+        symptom_measurement_count_this_week:
+          title: Symptom Measurement Count This Week
+          type: integer
+        symptom_measurement_count_today:
+          title: Symptom Measurement Count Today
+          type: integer
+        weight_measurement_count_this_week:
+          title: Weight Measurement Count This Week
+          type: integer
+        weight_measurement_count_today:
+          title: Weight Measurement Count Today
+          type: integer
+      required:
+      - pod_points
+      - bp_measurement_count_today
+      - bs_measurement_count_today
+      - weight_measurement_count_today
+      - weight_measurement_count_this_week
+      - mood_measurement_count_today
+      - symptom_measurement_count_today
+      - symptom_measurement_count_this_week
+      title: Homepage
+      type: object
+    InterventionType:
+      description: An enumeration.
+      enum:
+      - NUTRITIONAL_GROUP_CLASS
+      - FLAG_TO_GUIDE
+      - NONE
+      title: InterventionType
+      type: string
+    Language:
+      description: Enum for storing language preferences
+      enum:
+      - EN
+      - ES
+      title: Language
+      type: string
+    LoginUser:
+      properties:
+        account_id:
+          title: Account Id
+          type: integer
+        dob:
+          format: date
+          title: Dob
+          type: string
+        login_key:
+          title: Login Key
+          type: string
+        provider_id:
+          title: Provider Id
+          type: integer
+        verified_phone_number:
+          title: Verified Phone Number
+          type: string
+      required:
+      - login_key
+      title: LoginUser
+      type: object
+    MeasurementColumn:
+      description: An enumeration.
+      enum:
+      - blood_pressure
+      - blood_sugar
+      - mood
+      - weight
+      title: MeasurementColumn
+      type: string
+    MentalHealth:
+      properties:
+        anxiety:
+          title: Anxiety
+          type: boolean
+        bipolar_disorder:
+          title: Bipolar Disorder
+          type: boolean
+        depression:
+          title: Depression
+          type: boolean
+        post_traumatic_stress_disorder:
+          title: Post Traumatic Stress Disorder
+          type: boolean
+        postpartum_depression:
+          title: Postpartum Depression
+          type: boolean
+        schizophrenia:
+          title: Schizophrenia
+          type: boolean
+        substance_use_disorder:
+          title: Substance Use Disorder
+          type: boolean
+      title: MentalHealth
+      type: object
+    ModelBucket:
+      description: An enumeration.
+      enum:
+      - DOES_NOT_MEET_INCLUSION_CRITERIA
+      - NOT_ENOUGH_INFORMATION
+      - ALREADY_HAS_IT
+      - NOT_AT_RISK
+      - MINIMAL
+      - MILD
+      - MODERATE
+      - HIGH
+      title: ModelBucket
+      type: string
+    ModelResults:
+      properties:
+        account_id:
+          title: Account Id
+          type: integer
+        evaluated_at:
+          format: date-time
+          title: Evaluated At
+          type: string
+        explanation_markdown:
+          title: Explanation Markdown
+          type: string
+        model_bucket:
+          $ref: '#/components/schemas/ModelBucket'
+        model_type:
+          $ref: '#/components/schemas/ModelType'
+        model_version:
+          title: Model Version
+          type: string
+      required:
+      - model_type
+      - model_bucket
+      title: ModelResults
+      type: object
+    ModelType:
+      description: An enumeration.
+      enum:
+      - EXCESSIVE_GESTATIONAL_WEIGHT_GAIN
+      - HDP
+      - GDM
+      title: ModelType
+      type: string
+    MoodMeasurement:
+      properties:
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        mood:
+          title: Mood
+          type: integer
+      required:
+      - measurement_time
+      - mood
+      title: MoodMeasurement
+      type: object
+    MoodMeasurementWithWeek:
+      description: Composable class for storing pregnancy week.
+      properties:
+        day:
+          default: 0
+          title: Day
+          type: integer
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        mood:
+          title: Mood
+          type: integer
+        mood_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        week:
+          default: 0
+          title: Week
+          type: integer
+      required:
+      - measurement_time
+      - mood
+      title: MoodMeasurementWithWeek
+      type: object
+    Patient:
+      description: Represent the overview data of a single patient.
+      properties:
+        age:
+          title: Age
+          type: integer
+        analytics_id:
+          format: uuid
+          title: Analytics Id
+          type: string
+        babies_expected:
+          title: Babies Expected
+          type: integer
+        blood_pressure_measurement_time:
+          format: date-time
+          title: Blood Pressure Measurement Time
+          type: string
+        blood_sugar_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        blood_sugar_measurement_time:
+          format: date-time
+          title: Blood Sugar Measurement Time
+          type: string
+        blood_sugar_notes:
+          title: Blood Sugar Notes
+          type: string
+        blood_sugar_time_period:
+          $ref: '#/components/schemas/TimePeriod'
+        concerning_symptoms_num:
+          title: Concerning Symptoms Num
+          type: integer
+        delivery_status:
+          $ref: '#/components/schemas/DeliveryStatus'
+        dia:
+          title: Dia
+          type: number
+        dia_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        dob:
+          format: date-time
+          title: Dob
+          type: string
+        full_name:
+          title: Full Name
+          type: string
+        glucose:
+          title: Glucose
+          type: number
+        id:
+          title: Id
+          type: integer
+        model_results:
+          items:
+            $ref: '#/components/schemas/ModelResults'
+          title: Model Results
+          type: array
+        mood:
+          title: Mood
+          type: integer
+        mood_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        mood_measurement_time:
+          format: date-time
+          title: Mood Measurement Time
+          type: string
+        not_concerning_symptoms_num:
+          title: Not Concerning Symptoms Num
+          type: integer
+        pre_pregnancy_weight:
+          title: Pre Pregnancy Weight
+          type: number
+        pregnancy_end_date:
+          format: date
+          title: Pregnancy End Date
+          type: string
+        pregnancy_start_date:
+          format: date
+          title: Pregnancy Start Date
+          type: string
+        previous_births:
+          title: Previous Births
+          type: integer
+        previous_pregnancies:
+          title: Previous Pregnancies
+          type: integer
+        pulse:
+          title: Pulse
+          type: number
+        pulse_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        sys:
+          title: Sys
+          type: number
+        sys_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        weight:
+          title: Weight
+          type: number
+        weight_flag:
+          $ref: '#/components/schemas/WeightStatus'
+        weight_gain:
+          title: Weight Gain
+          type: number
+        weight_measurement_time:
+          format: date-time
+          title: Weight Measurement Time
+          type: string
+      required:
+      - id
+      title: Patient
+      type: object
+    PatientColumn:
+      description: The patient information columns shown in admin web portal.
+      enum:
+      - id
+      - full_name
+      - sys
+      - dia
+      - pulse
+      - blood_sugar
+      - mood
+      - weight
+      title: PatientColumn
+      type: string
+    PatientInfo:
+      description: Represent the overview data of the patient's profile.
+      properties:
+        age:
+          title: Age
+          type: integer
+        analytics_id:
+          format: uuid
+          title: Analytics Id
+          type: string
+        anxiety:
+          title: Anxiety
+          type: boolean
+        babies_expected:
+          title: Babies Expected
+          type: integer
+        bipolar_disorder:
+          title: Bipolar Disorder
+          type: boolean
+        blood_pressure_measurement_time:
+          format: date-time
+          title: Blood Pressure Measurement Time
+          type: string
+        blood_sugar_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        blood_sugar_measurement_time:
+          format: date-time
+          title: Blood Sugar Measurement Time
+          type: string
+        blood_sugar_notes:
+          title: Blood Sugar Notes
+          type: string
+        blood_sugar_time_period:
+          $ref: '#/components/schemas/TimePeriod'
+        concerning_symptoms_num:
+          title: Concerning Symptoms Num
+          type: integer
+        delivery_status:
+          $ref: '#/components/schemas/DeliveryStatus'
+        depression:
+          title: Depression
+          type: boolean
+        devices:
+          items:
+            $ref: '#/components/schemas/RemotePatientMonitoringDevice'
+          title: Devices
+          type: array
+        dia:
+          title: Dia
+          type: number
+        dia_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        dob:
+          format: date-time
+          title: Dob
+          type: string
+        email:
+          title: Email
+          type: string
+        full_name:
+          title: Full Name
+          type: string
+        glucose:
+          title: Glucose
+          type: number
+        id:
+          title: Id
+          type: integer
+        model_results:
+          items:
+            $ref: '#/components/schemas/ModelResults'
+          title: Model Results
+          type: array
+        mood:
+          title: Mood
+          type: integer
+        mood_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        mood_measurement_time:
+          format: date-time
+          title: Mood Measurement Time
+          type: string
+        not_concerning_symptoms_num:
+          title: Not Concerning Symptoms Num
+          type: integer
+        phone_number:
+          title: Phone Number
+          type: string
+        post_traumatic_stress_disorder:
+          title: Post Traumatic Stress Disorder
+          type: boolean
+        postpartum_depression:
+          title: Postpartum Depression
+          type: boolean
+        pre_pregnancy_weight:
+          title: Pre Pregnancy Weight
+          type: number
+        pregnancy_end_date:
+          format: date
+          title: Pregnancy End Date
+          type: string
+        pregnancy_start_date:
+          format: date
+          title: Pregnancy Start Date
+          type: string
+        previous_births:
+          title: Previous Births
+          type: integer
+        previous_pregnancies:
+          title: Previous Pregnancies
+          type: integer
+        pulse:
+          title: Pulse
+          type: number
+        pulse_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        schizophrenia:
+          title: Schizophrenia
+          type: boolean
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        substance_use_disorder:
+          title: Substance Use Disorder
+          type: boolean
+        sys:
+          title: Sys
+          type: number
+        sys_flag:
+          $ref: '#/components/schemas/AlertFlag'
+        weight:
+          title: Weight
+          type: number
+        weight_flag:
+          $ref: '#/components/schemas/WeightStatus'
+        weight_gain:
+          title: Weight Gain
+          type: number
+        weight_measurement_time:
+          format: date-time
+          title: Weight Measurement Time
+          type: string
+      required:
+      - id
+      title: PatientInfo
+      type: object
+    PatientMetricInformation:
+      description: A collection of various metrics for a patient
+      properties:
+        account_id:
+          title: Account Id
+          type: integer
+        blood_pressure_1x:
+          title: Blood Pressure 1X
+          type: integer
+        blood_pressure_1x_flag:
+          title: Blood Pressure 1X Flag
+          type: boolean
+        blood_pressure_2x:
+          title: Blood Pressure 2X
+          type: integer
+        blood_pressure_2x_flag:
+          title: Blood Pressure 2X Flag
+          type: boolean
+        blood_pressure_flag:
+          title: Blood Pressure Flag
+          type: boolean
+        end_date:
+          format: date
+          title: End Date
+          type: string
+        glucose_1_3x:
+          title: Glucose 1 3X
+          type: integer
+        glucose_1_3x_flag:
+          title: Glucose 1 3X Flag
+          type: boolean
+        glucose_4x:
+          title: Glucose 4X
+          type: integer
+        glucose_4x_flag:
+          title: Glucose 4X Flag
+          type: boolean
+        glucose_flag:
+          title: Glucose Flag
+          type: boolean
+        has_bp_device:
+          title: Has Bp Device
+          type: boolean
+        has_glucose_device:
+          title: Has Glucose Device
+          type: boolean
+        mood:
+          title: Mood
+          type: integer
+        mood_flag:
+          title: Mood Flag
+          type: boolean
+        start_date:
+          format: date
+          title: Start Date
+          type: string
+        symptoms:
+          title: Symptoms
+          type: integer
+        symptoms_flag:
+          title: Symptoms Flag
+          type: boolean
+        total_blood_pressure:
+          title: Total Blood Pressure
+          type: integer
+        total_glucose:
+          title: Total Glucose
+          type: integer
+        week:
+          title: Week
+          type: integer
+        weight:
+          title: Weight
+          type: integer
+        weight_flag:
+          title: Weight Flag
+          type: boolean
+      required:
+      - mood
+      - mood_flag
+      - blood_pressure_1x
+      - blood_pressure_1x_flag
+      - blood_pressure_2x
+      - blood_pressure_2x_flag
+      - total_blood_pressure
+      - blood_pressure_flag
+      - weight
+      - weight_flag
+      - glucose_1_3x
+      - glucose_1_3x_flag
+      - glucose_4x
+      - glucose_4x_flag
+      - total_glucose
+      - glucose_flag
+      - symptoms
+      - symptoms_flag
+      - has_glucose_device
+      - has_bp_device
+      title: PatientMetricInformation
+      type: object
+    PatientMetricInformationByWeek:
+      description: Dictionary mapping a week to the PatientMetricInformation for that
+        week
+      properties:
+        weekly_metrics:
+          additionalProperties:
+            $ref: '#/components/schemas/PatientMetricInformation'
+          title: Weekly Metrics
+          type: object
+      required:
+      - weekly_metrics
+      title: PatientMetricInformationByWeek
+      type: object
+    PatientProfile:
+      description: Represents a single patient profile.
+      properties:
+        profile:
+          $ref: '#/components/schemas/PatientInfo'
+        review:
+          $ref: '#/components/schemas/PatientReview'
+        staff:
+          items:
+            $ref: '#/components/schemas/Provider'
+          title: Staff
+          type: array
+        symptoms:
+          items:
+            $ref: '#/components/schemas/Symptom'
+          title: Symptoms
+          type: array
+      required:
+      - profile
+      - staff
+      - symptoms
+      title: PatientProfile
+      type: object
+    PatientReview:
+      properties:
+        Provider:
+          $ref: '#/components/schemas/Provider'
+        Review:
+          $ref: '#/components/schemas/Review'
+      title: PatientReview
+      type: object
+    PatientStatistics:
+      description: The main statistics for the admin dashboard.
+      properties:
+        num_patients_benefit_from_intervention:
+          title: Num Patients Benefit From Intervention
+          type: integer
+        patients_over_36_weeks:
+          title: Patients Over 36 Weeks
+          type: integer
+        patients_vitals_out_of_range:
+          title: Patients Vitals Out Of Range
+          type: integer
+      required:
+      - patients_vitals_out_of_range
+      - patients_over_36_weeks
+      - num_patients_benefit_from_intervention
+      title: PatientStatistics
+      type: object
+    PatientsFilter:
+      description: 'Represents the request body to get patients with filters and sorting.
+
+        We get the data with OR conditions for the mental health and trimester values
+        and AND conditions for top level filter if present.
+
+        (mental health value OR mental health value) AND (trimester value OR trimester
+        value)'
+      properties:
+        assigned:
+          title: Assigned
+          type: boolean
+        benefit_from_intervention:
+          title: Benefit From Intervention
+          type: boolean
+        completed_questionnaire:
+          default: true
+          title: Completed Questionnaire
+          type: boolean
+        delivery_status:
+          $ref: '#/components/schemas/DeliveryStatus'
+        limit:
+          default: 20
+          title: Limit
+          type: integer
+        mental_health:
+          $ref: '#/components/schemas/MentalHealth'
+        page_number:
+          default: 0
+          title: Page Number
+          type: integer
+        provider_id:
+          title: Provider Id
+          type: integer
+        search:
+          title: Search
+          type: string
+        sort_by:
+          $ref: '#/components/schemas/SortBy'
+        statistics:
+          $ref: '#/components/schemas/StatisticsPatientsFilter'
+        status:
+          items:
+            $ref: '#/components/schemas/AccountStatus'
+          type: array
+        trimester:
+          $ref: '#/components/schemas/TrimesterFilter'
+      title: PatientsFilter
+      type: object
+    PendingQuestionnaires:
+      properties:
+        questionnaire_ids:
+          items:
+            type: string
+          title: Questionnaire Ids
+          type: array
+      required:
+      - questionnaire_ids
+      title: PendingQuestionnaires
+      type: object
+    PersistedGraphqlQuery:
+      properties:
+        query_id:
+          title: Query Id
+          type: string
+        variables:
+          title: Variables
+          type: object
+      required:
+      - query_id
+      title: PersistedGraphqlQuery
+      type: object
+    Practice:
+      properties:
+        fax_number:
+          title: Fax Number
+          type: string
+        healthjump_id:
+          title: Healthjump Id
+          type: string
+        id:
+          title: Id
+          type: integer
+        name:
+          title: Name
+          type: string
+        npi:
+          title: Npi
+          type: integer
+        registration_code:
+          title: Registration Code
+          type: string
+      required:
+      - id
+      title: Practice
+      type: object
+    Provider:
+      description: Represents a care provider, e.g. doctor, nurse, doula, engagement
+        coach.
+      properties:
+        analytics_id:
+          format: uuid
+          title: Analytics Id
+          type: string
+        email:
+          title: Email
+          type: string
+        first_name:
+          title: First Name
+          type: string
+        id:
+          title: Id
+          type: integer
+        last_name:
+          title: Last Name
+          type: string
+        npi:
+          title: Npi
+          type: integer
+        organization:
+          title: Organization
+          type: string
+        phone_number:
+          title: Phone Number
+          type: string
+        prefix:
+          $ref: '#/components/schemas/ProviderPrefix'
+        title:
+          title: Title
+          type: string
+        type:
+          title: Type
+          type: string
+      required:
+      - id
+      - first_name
+      - last_name
+      - title
+      - type
+      title: Provider
+      type: object
+    ProviderPrefix:
+      description: An enumeration.
+      enum:
+      - DR
+      title: ProviderPrefix
+      type: string
+    ProviderQuestionnaireResponse:
+      properties:
+        account_id:
+          title: Account Id
+          type: integer
+        id:
+          title: Id
+          type: integer
+        language:
+          title: Language
+          type: string
+        provider_id:
+          title: Provider Id
+          type: integer
+        questionnaire_id:
+          title: Questionnaire Id
+          type: string
+        response:
+          title: Response
+          type: object
+        timestamp:
+          format: date-time
+          title: Timestamp
+          type: string
+        version:
+          title: Version
+          type: integer
+      required:
+      - id
+      - account_id
+      - provider_id
+      - timestamp
+      - questionnaire_id
+      - response
+      - version
+      - language
+      title: ProviderQuestionnaireResponse
+      type: object
+    ProviderQuestionnaireResponseMetadata:
+      properties:
+        id:
+          title: Id
+          type: integer
+        language:
+          title: Language
+          type: string
+        provider_id:
+          title: Provider Id
+          type: integer
+        timestamp:
+          format: date-time
+          title: Timestamp
+          type: string
+        version:
+          title: Version
+          type: integer
+      required:
+      - id
+      - provider_id
+      - timestamp
+      - version
+      - language
+      title: ProviderQuestionnaireResponseMetadata
+      type: object
+    Question:
+      description: An individual question to deliver to the app.
+      properties:
+        type:
+          title: Type
+          type: string
+      required:
+      - type
+      title: Question
+      type: object
+    QuestionList:
+      description: A question list to deliver to the app.
+      properties:
+        name:
+          title: Name
+          type: string
+        questions:
+          items:
+            $ref: '#/components/schemas/Question'
+          title: Questions
+          type: array
+      required:
+      - name
+      - questions
+      title: QuestionList
+      type: object
+    QuestionResponse:
+      properties:
+        bool_val:
+          title: Bool Val
+          type: boolean
+        date_val:
+          format: date
+          title: Date Val
+          type: string
+        int_val:
+          title: Int Val
+          type: integer
+        list_str_val:
+          items:
+            type: string
+          title: List Str Val
+          type: array
+        str_val:
+          title: Str Val
+          type: string
+      title: QuestionResponse
+      type: object
+    Questionnaire:
+      description: The data for any questionnaire.
+      properties:
+        activity:
+          $ref: '#/components/schemas/Activity'
+        address_1:
+          title: Address 1
+          type: string
+        address_2:
+          title: Address 2
+          type: string
+        anxiety:
+          title: Anxiety
+          type: boolean
+        babies_expected:
+          title: Babies Expected
+          type: integer
+        bipolar_disorder:
+          title: Bipolar Disorder
+          type: boolean
+        birth_day:
+          title: Birth Day
+          type: integer
+        birth_month:
+          title: Birth Month
+          type: integer
+        birth_year:
+          title: Birth Year
+          type: integer
+        city:
+          title: City
+          type: string
+        current_weight:
+          title: Current Weight
+          type: number
+        degree:
+          $ref: '#/components/schemas/Degree'
+        delivery_status:
+          $ref: '#/components/schemas/DeliveryStatus'
+        depression:
+          title: Depression
+          type: boolean
+        dob:
+          format: date-time
+          title: Dob
+          type: string
+        due_date:
+          format: date-time
+          title: Due Date
+          type: string
+        email:
+          title: Email
+          type: string
+        full_name:
+          title: Full Name
+          type: string
+        health_insurance:
+          $ref: '#/components/schemas/HealthInsurance'
+        height:
+          title: Height
+          type: number
+        last_menstrual:
+          format: date-time
+          title: Last Menstrual
+          type: string
+        nickname:
+          title: Nickname
+          type: string
+        phone_number:
+          title: Phone Number
+          type: string
+        post_traumatic_stress_disorder:
+          title: Post Traumatic Stress Disorder
+          type: boolean
+        postpartum_depression:
+          title: Postpartum Depression
+          type: boolean
+        pre_pregnancy_weight:
+          title: Pre Pregnancy Weight
+          type: number
+        pregnancy_end_date:
+          format: date
+          title: Pregnancy End Date
+          type: string
+        previous_births:
+          title: Previous Births
+          type: integer
+        previous_pregnancies:
+          title: Previous Pregnancies
+          type: integer
+        race_asian:
+          title: Race Asian
+          type: boolean
+        race_black:
+          title: Race Black
+          type: boolean
+        race_hispanic:
+          title: Race Hispanic
+          type: boolean
+        race_native_american:
+          title: Race Native American
+          type: boolean
+        race_other:
+          title: Race Other
+          type: boolean
+        race_pacific_islander:
+          title: Race Pacific Islander
+          type: boolean
+        race_prefer_not_to_answer:
+          title: Race Prefer Not To Answer
+          type: boolean
+        race_white:
+          title: Race White
+          type: boolean
+        schizophrenia:
+          title: Schizophrenia
+          type: boolean
+        ssn:
+          title: Ssn
+          type: integer
+        state:
+          title: State
+          type: string
+        substance_use_disorder:
+          title: Substance Use Disorder
+          type: boolean
+        timezone_offset:
+          title: Timezone Offset
+          type: integer
+        zipcode:
+          title: Zipcode
+          type: string
+      title: Questionnaire
+      type: object
+    QuestionnaireQuestions:
+      properties:
+        id:
+          title: Id
+          type: integer
+        language:
+          title: Language
+          type: string
+        questionnaire:
+          title: Questionnaire
+          type: object
+        questionnaire_id:
+          title: Questionnaire Id
+          type: string
+        response_schema:
+          title: Response Schema
+          type: object
+        timestamp:
+          format: date-time
+          title: Timestamp
+          type: string
+        version:
+          title: Version
+          type: integer
+      required:
+      - id
+      - questionnaire_id
+      - questionnaire
+      - response_schema
+      - version
+      - language
+      title: QuestionnaireQuestions
+      type: object
+    RedoxResponse:
+      properties:
+        challenge:
+          title: Challenge
+          type: string
+      title: RedoxResponse
+      type: object
+    RemotePatientMonitoringDevice:
+      properties:
+        association_time:
+          format: date-time
+          title: Association Time
+          type: string
+        connected:
+          title: Connected
+          type: boolean
+        id:
+          title: Id
+          type: string
+        provided_by:
+          $ref: '#/components/schemas/RpmDeviceProvider'
+        type:
+          $ref: '#/components/schemas/RpmDeviceType'
+      required:
+      - id
+      title: RemotePatientMonitoringDevice
+      type: object
+    Review:
+      properties:
+        account_id:
+          title: Account Id
+          type: integer
+        case:
+          title: Case
+          type: string
+        id:
+          title: Id
+          type: integer
+        review_time:
+          format: date-time
+          title: Review Time
+          type: string
+        reviewed_by:
+          title: Reviewed By
+          type: integer
+      required:
+      - id
+      - account_id
+      title: Review
+      type: object
+    ReviewModeAccount:
+      description: Represets the accounts with the review status object for the review
+        mode.
+      properties:
+        account_creation_time:
+          format: date-time
+          title: Account Creation Time
+          type: string
+        analytics_id:
+          format: uuid
+          title: Analytics Id
+          type: string
+        completed_questionnaire:
+          title: Completed Questionnaire
+          type: boolean
+        ehr_id:
+          title: Ehr Id
+          type: string
+        enrollment_validator:
+          title: Enrollment Validator
+          type: string
+        full_name:
+          title: Full Name
+          type: string
+        guide_id:
+          title: Guide Id
+          type: integer
+        has_registration_code:
+          title: Has Registration Code
+          type: boolean
+        id:
+          title: Id
+          type: integer
+        nickname:
+          title: Nickname
+          type: string
+        preferred_communication:
+          $ref: '#/components/schemas/CommunicationType'
+        preferred_language:
+          $ref: '#/components/schemas/Language'
+        pregnancy_start_date:
+          format: date
+          title: Pregnancy Start Date
+          type: string
+        primary_clinic:
+          title: Primary Clinic
+          type: string
+        reviewed_by:
+          title: Reviewed By
+          type: integer
+        signup_code:
+          title: Signup Code
+          type: string
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        timezone_offset:
+          title: Timezone Offset
+          type: integer
+      required:
+      - id
+      - status
+      title: ReviewModeAccount
+      type: object
+    ReviewModeStatus:
+      description: The 4 types of review mode
+      enum:
+      - vitals_out_of_range
+      - delfina_risk_predection
+      - high_rist_watchlist
+      - over_36_weeks_watchlist
+      title: ReviewModeStatus
+      type: string
+    RpmDeviceProvider:
+      description: An enumeration.
+      enum:
+      - DELFINA
+      - HOME
+      title: RpmDeviceProvider
+      type: string
+    RpmDeviceType:
+      description: An enumeration.
+      enum:
+      - BLOOD_PRESSURE_CUFF
+      - SCALE
+      - BLOOD_GLUCOSE_MONITOR
+      title: RpmDeviceType
+      type: string
+    SortBy:
+      description: The sorted column and the sort direction.
+      properties:
+        column:
+          $ref: '#/components/schemas/PatientColumn'
+        sort_direction:
+          $ref: '#/components/schemas/SortDirection'
+      required:
+      - column
+      - sort_direction
+      title: SortBy
+      type: object
+    SortDirection:
+      description: 'The 2 sorting directions: Desc and Asc'
+      enum:
+      - desc
+      - asc
+      title: SortDirection
+      type: string
+    SsoSession:
+      properties:
+        redirect_url:
+          title: Redirect Url
+          type: string
+        token:
+          title: Token
+          type: string
+      required:
+      - token
+      title: SsoSession
+      type: object
+    StatisticsPatientsFilter:
+      description: Represents the statistics review mode case and the measurement
+        column for vitals out of range review mode.
+      properties:
+        case:
+          $ref: '#/components/schemas/ReviewModeStatus'
+        is_out_range:
+          default: true
+          title: Is Out Range
+          type: boolean
+        vital_type:
+          $ref: '#/components/schemas/MeasurementColumn'
+      required:
+      - case
+      title: StatisticsPatientsFilter
+      type: object
+    Symptom:
+      description: Represents a single symptom data point measured at a particular
+        time for a user.
+      properties:
+        checked:
+          title: Checked
+          type: boolean
+        concerning:
+          title: Concerning
+          type: boolean
+        description:
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        name:
+          title: Name
+          type: string
+        week:
+          title: Week
+          type: integer
+      required:
+      - id
+      - name
+      - description
+      - concerning
+      title: Symptom
+      type: object
+    TimePeriod:
+      description: Time Period Enum
+      enum:
+      - WAKE_UP
+      - BEFORE_BREAKFAST
+      - AFTER_BREAKFAST
+      - BEFORE_LUNCH
+      - AFTER_LUNCH
+      - BEFORE_SNACK
+      - AFTER_SNACK
+      - BEFORE_DINNER
+      - AFTER_DINNER
+      title: TimePeriod
+      type: string
+    TodoType:
+      description: Todo Type
+      enum:
+      - WEEKLY
+      - DAILY
+      title: TodoType
+      type: string
+    Todos:
+      properties:
+        completed:
+          title: Completed
+          type: boolean
+        day:
+          title: Day
+          type: integer
+        id:
+          title: Id
+          type: integer
+        last_updated:
+          format: date-time
+          title: Last Updated
+          type: string
+        todo:
+          title: Todo
+          type: string
+        type:
+          $ref: '#/components/schemas/TodoType'
+        week:
+          title: Week
+          type: integer
+      required:
+      - id
+      - week
+      - type
+      title: Todos
+      type: object
+    TrimesterFilter:
+      description: The values of each pregnancy trimester
+      properties:
+        first:
+          title: First
+          type: boolean
+        second:
+          title: Second
+          type: boolean
+        third:
+          title: Third
+          type: boolean
+      title: TrimesterFilter
+      type: object
+    UpdateAccount:
+      properties:
+        demographics:
+          $ref: '#/components/schemas/Demographics'
+        devices:
+          items:
+            $ref: '#/components/schemas/UpdateDevice'
+          title: Devices
+          type: array
+        ehr_id:
+          title: Ehr Id
+          type: string
+        full_name:
+          title: Full Name
+          type: string
+        guide_id:
+          title: Guide Id
+          type: integer
+        nickname:
+          title: Nickname
+          type: string
+        practice_id:
+          title: Practice Id
+          type: integer
+        preferred_communication:
+          $ref: '#/components/schemas/CommunicationType'
+        preferred_language:
+          $ref: '#/components/schemas/Language'
+        primary_clinic:
+          title: Primary Clinic
+          type: string
+        timezone_offset:
+          title: Timezone Offset
+          type: integer
+      title: UpdateAccount
+      type: object
+    UpdateAppLoginGuidePatientInformation:
+      description: 'Class for requests to update App Login Information for the guide
+        portal
+
+
+        This is a separate class with optional members to support
+
+        partial updates.'
+      properties:
+        app_login_notes:
+          title: App Login Notes
+          type: string
+        app_login_reminder_count:
+          title: App Login Reminder Count
+          type: integer
+        first_time_login:
+          title: First Time Login
+          type: boolean
+      title: UpdateAppLoginGuidePatientInformation
+      type: object
+    UpdateDevice:
+      properties:
+        association_time:
+          format: date-time
+          title: Association Time
+          type: string
+        connected:
+          title: Connected
+          type: boolean
+        id:
+          title: Id
+          type: string
+        provided_by:
+          $ref: '#/components/schemas/RpmDeviceProvider'
+        type:
+          $ref: '#/components/schemas/RpmDeviceType'
+      title: UpdateDevice
+      type: object
+    UpdateGuide:
+      properties:
+        email:
+          title: Email
+          type: string
+        first_name:
+          title: First Name
+          type: string
+        last_name:
+          title: Last Name
+          type: string
+        phone_number:
+          title: Phone Number
+          type: string
+        practices:
+          items:
+            $ref: '#/components/schemas/Practice'
+          title: Practices
+          type: array
+      title: UpdateGuide
+      type: object
+    UpdateIntervention:
+      properties:
+        interventions:
+          items:
+            $ref: '#/components/schemas/InterventionType'
+          type: array
+        model_type:
+          $ref: '#/components/schemas/ModelType'
+      required:
+      - model_type
+      - interventions
+      title: UpdateIntervention
+      type: object
+    UpdateVideoEngagementData:
+      description: 'Class for requests to update Video engagement data for the guide
+        portal
+
+
+        This is a separate class with optional members to support
+
+        partial updates.'
+      properties:
+        account_id:
+          title: Account Id
+          type: integer
+        video_notes:
+          title: Video Notes
+          type: string
+        video_reminder_count:
+          title: Video Reminder Count
+          type: integer
+        video_status:
+          $ref: '#/components/schemas/VideoStatus'
+        visit_time:
+          format: date-time
+          title: Visit Time
+          type: string
+      title: UpdateVideoEngagementData
+      type: object
+    UserEventType:
+      description: User Event Type to be redirected to external URL.
+      enum:
+      - eventbrite_class
+      - schedule_guide
+      title: UserEventType
+      type: string
+    ValidationError:
+      properties:
+        loc:
+          items:
+            type: string
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+    VideoEngagementData:
+      properties:
+        account_id:
+          title: Account Id
+          type: integer
+        id:
+          title: Id
+          type: integer
+        video_last_reminder_time:
+          format: date-time
+          title: Video Last Reminder Time
+          type: string
+        video_notes:
+          title: Video Notes
+          type: string
+        video_reminder_count:
+          title: Video Reminder Count
+          type: integer
+        video_status:
+          $ref: '#/components/schemas/VideoStatus'
+        visit_time:
+          format: date-time
+          title: Visit Time
+          type: string
+      required:
+      - id
+      - account_id
+      - visit_time
+      title: VideoEngagementData
+      type: object
+    VideoStatus:
+      description: Video Status Enum
+      enum:
+      - SCHEDULED
+      - COMPLETED
+      - NO_SHOW
+      title: VideoStatus
+      type: string
+    WeightMeasurement:
+      properties:
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        reading_id:
+          title: Reading Id
+          type: string
+        weight:
+          title: Weight
+          type: number
+      required:
+      - measurement_time
+      - weight
+      title: WeightMeasurement
+      type: object
+    WeightMeasurementWithWeek:
+      description: Composable class for storing pregnancy week.
+      properties:
+        day:
+          default: 0
+          title: Day
+          type: integer
+        measurement_time:
+          format: date-time
+          title: Measurement Time
+          type: string
+        reading_id:
+          title: Reading Id
+          type: string
+        week:
+          default: 0
+          title: Week
+          type: integer
+        weight:
+          title: Weight
+          type: number
+        weight_flag:
+          $ref: '#/components/schemas/WeightStatus'
+        weight_gain:
+          title: Weight Gain
+          type: integer
+      required:
+      - measurement_time
+      - weight
+      title: WeightMeasurementWithWeek
+      type: object
+    WeightRangePointWithWeek:
+      description: Represents acceptable weight gain minimum/maximums for one week.
+      properties:
+        day:
+          default: 0
+          title: Day
+          type: integer
+        maximum:
+          title: Maximum
+          type: number
+        minimum:
+          title: Minimum
+          type: number
+        week:
+          default: 0
+          title: Week
+          type: integer
+      required:
+      - maximum
+      - minimum
+      title: WeightRangePointWithWeek
+      type: object
+    WeightStatus:
+      description: The pregnancy weight gain status.
+      enum:
+      - in_range
+      - under_weight
+      - above_weight
+      title: WeightStatus
+      type: string
+    backend__models__StaffAction:
+      description: An enumeration.
+      enum:
+      - ENGAGEMENT_REVIEW
+      - VIDEO_VISIT
+      - VIDEO_VISIT_CONTACT
+      - TRACKING_METRICS_CONTACT
+      - APP_LOGIN_CONTACT
+      - DELIVERY_DATE_CHANGE
+      - DELIVERY_STATUS_CHANGE
+      - ACCOUNT_STATUS_CHANGE
+      title: StaffAction
+      type: string
+    backend__schemas__StaffAction:
+      properties:
+        action:
+          $ref: '#/components/schemas/backend__models__StaffAction'
+        target:
+          title: Target
+          type: integer
+        timestamp:
+          format: date-time
+          title: Timestamp
+          type: string
+      required:
+      - timestamp
+      - action
+      - target
+      title: StaffAction
+      type: object
+  securitySchemes:
+    HTTPBearer:
+      scheme: bearer
+      type: http
+    appsheet:
+      in: header
+      name: AppsheetToken
+      type: apiKey
+    firebase:
+      scheme: bearer
+      type: http
+    redox:
+      in: header
+      name: verification-token
+      type: apiKey
+info:
+  description: Fastapi openapi schema
+  title: gaia
+  version: 0.1.0
+openapi: 3.0.2
+paths:
+  /api/account/appsheet_update:
+    post:
+      operationId: appsheet_account_update_api_account_appsheet_update_post
+      parameters:
+      - in: query
+        name: practice
+        required: true
+        schema:
+          title: Practice
+          type: integer
+      - in: query
+        name: code
+        required: true
+        schema:
+          title: Code
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Appsheet Account Update Api Account Appsheet Update
+                  Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - appsheet: []
+      summary: Appsheet Account Update
+  /api/account/delete_messaging_token:
+    post:
+      operationId: delete_messaging_token_api_account_delete_messaging_token_post
+      parameters:
+      - in: query
+        name: messaging_token
+        required: true
+        schema:
+          title: Messaging Token
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Messaging Token Api Account Delete Messaging
+                  Token Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Messaging Token
+  /api/account/event/{event_type}:
+    get:
+      operationId: redirect_event_url_api_account_event__event_type__get
+      parameters:
+      - in: path
+        name: event_type
+        required: true
+        schema:
+          $ref: '#/components/schemas/UserEventType'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Redirect Event Url
+  /api/account/register:
+    post:
+      operationId: register_account_api_account_register_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Registration Code
+              type: string
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Register Account
+  /api/account/send_phone_challenge_code:
+    post:
+      description: Creates Twilio verification code and returns unique sid
+      operationId: create_verification_code_api_account_send_phone_challenge_code_post
+      parameters:
+      - in: query
+        name: phone_number
+        required: true
+        schema:
+          title: Phone Number
+          type: string
+      - in: query
+        name: region
+        required: false
+        schema:
+          default: US
+          title: Region
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Create Verification Code Api Account Send Phone Challenge
+                  Code Post
+                type: string
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Create Verification Code
+  /api/account/{account_id}/articles/week/{week}/lang/{lang}:
+    get:
+      description: Lists articles for a user in a given week.
+      operationId: list_articles_api_account__account_id__articles_week__week__lang__lang__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: path
+        name: week
+        required: true
+        schema:
+          title: Week
+          type: integer
+      - in: path
+        name: lang
+        required: true
+        schema:
+          title: Lang
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Article'
+                title: Response List Articles Api Account  Account Id  Articles Week  Week  Lang  Lang  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: List Articles
+  /api/account/{account_id}/blood_pressure_measurements:
+    get:
+      description: Get all blood pressure measurments for a user.
+      operationId: list_blood_pressure_measurements_api_account__account_id__blood_pressure_measurements_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BloodPressureMeasurementWithWeek'
+                title: Response List Blood Pressure Measurements Api Account  Account
+                  Id  Blood Pressure Measurements Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: List Blood Pressure Measurements
+    post:
+      operationId: add_blood_pressure_measurements_api_account__account_id__blood_pressure_measurements_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BloodPressureMeasurement'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BloodPressureMeasurementWithWeek'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Add Blood Pressure Measurements
+  /api/account/{account_id}/blood_sugar_measurements:
+    get:
+      description: Get all blood sugar measurments for a user.
+      operationId: list_blood_sugar_measurements_api_account__account_id__blood_sugar_measurements_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BloodSugarMeasurementWithWeek'
+                title: Response List Blood Sugar Measurements Api Account  Account
+                  Id  Blood Sugar Measurements Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: List Blood Sugar Measurements
+    post:
+      operationId: add_blood_sugar_measurements_api_account__account_id__blood_sugar_measurements_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BloodSugarMeasurement'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BloodSugarMeasurementWithWeek'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Add Blood Sugar Measurements
+  /api/account/{account_id}/feedback:
+    post:
+      description: Save user feedback to database.
+      operationId: post_feedback_api_account__account_id__feedback_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Post Feedback Api Account  Account Id  Feedback Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Post Feedback
+  /api/account/{account_id}/homepage:
+    get:
+      description: 'Returns data required for Homepage screen in user app: Pod Points
+        and Today''s Task'
+      operationId: get_homepage_api_account__account_id__homepage_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Homepage'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Homepage
+  /api/account/{account_id}/mood_measurements:
+    get:
+      description: Get all mood measurments for a user.
+      operationId: list_mood_measurements_api_account__account_id__mood_measurements_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MoodMeasurementWithWeek'
+                title: Response List Mood Measurements Api Account  Account Id  Mood
+                  Measurements Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: List Mood Measurements
+    post:
+      operationId: add_mood_measurements_api_account__account_id__mood_measurements_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoodMeasurement'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoodMeasurementWithWeek'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Add Mood Measurements
+  /api/account/{account_id}/pending_questionnaires:
+    get:
+      description: Returns questionnaires which a patient is eligible to complete
+        and has not yet completed.
+      operationId: get_pending_questionnaires_api_account__account_id__pending_questionnaires_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PendingQuestionnaires'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Pending Questionnaires
+  /api/account/{account_id}/pre_pregnancy_weight:
+    get:
+      description: Get pre-pregnancy weight of a user, as specified in their questionnaire.
+      operationId: get_pre_pregnancy_weight_api_account__account_id__pre_pregnancy_weight_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Get Pre Pregnancy Weight Api Account  Account Id  Pre
+                  Pregnancy Weight Get
+                type: number
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Pre Pregnancy Weight
+  /api/account/{account_id}/providers:
+    get:
+      description: Get all providers for a user.
+      operationId: get_providers_api_account__account_id__providers_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Provider'
+                title: Response Get Providers Api Account  Account Id  Providers Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Providers
+  /api/account/{account_id}/questionnaire:
+    get:
+      description: Get questionnaire.
+      operationId: get_questionnaire_api_account__account_id__questionnaire_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Questionnaire'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Questionnaire
+    post:
+      description: Update questionnaire.
+      operationId: post_questionnaire_api_account__account_id__questionnaire_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Questionnaire'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Post Questionnaire Api Account  Account Id  Questionnaire
+                  Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Post Questionnaire
+  /api/account/{account_id}/questionnaire/{questionnaire_id}/response:
+    get:
+      description: Return the last questionnaire response for `account_id`
+      operationId: get_account_questionnaire_response_api_account__account_id__questionnaire__questionnaire_id__response_get
+      parameters:
+      - in: path
+        name: questionnaire_id
+        required: true
+        schema:
+          title: Questionnaire Id
+          type: string
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: language
+        required: false
+        schema:
+          title: Language
+          type: string
+      - in: query
+        name: version
+        required: false
+        schema:
+          title: Version
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountQuestionnaireResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Account Questionnaire Response
+    post:
+      operationId: submit_account_questionnaire_api_account__account_id__questionnaire__questionnaire_id__response_post
+      parameters:
+      - in: path
+        name: questionnaire_id
+        required: true
+        schema:
+          title: Questionnaire Id
+          type: string
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: version
+        required: true
+        schema:
+          title: Version
+          type: integer
+      - in: query
+        name: language
+        required: false
+        schema:
+          default: en
+          title: Language
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/QuestionResponse'
+              title: Questionnaire Response
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Submit Account Questionnaire Api Account  Account
+                  Id  Questionnaire  Questionnaire Id  Response Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Submit Account Questionnaire
+  /api/account/{account_id}/questions/{questionnaire_name}:
+    get:
+      description: Return a list of questions for this questionnaire.
+      operationId: get_questions_api_account__account_id__questions__questionnaire_name__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: path
+        name: questionnaire_name
+        required: true
+        schema:
+          title: Questionnaire Name
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionList'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Questions
+  /api/account/{account_id}/rpm_device:
+    post:
+      description: Register a device for a user.
+      operationId: register_device_api_account__account_id__rpm_device_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemotePatientMonitoringDevice'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Register Device Api Account  Account Id  Rpm Device
+                  Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Register Device
+  /api/account/{account_id}/rpm_devices:
+    get:
+      description: Get a user's rpm devices.
+      operationId: get_devices_api_account__account_id__rpm_devices_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RemotePatientMonitoringDevice'
+                title: Response Get Devices Api Account  Account Id  Rpm Devices Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Devices
+  /api/account/{account_id}/set_messaging_token:
+    post:
+      operationId: set_messaging_token_api_account__account_id__set_messaging_token_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: messaging_token
+        required: true
+        schema:
+          title: Messaging Token
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Set Messaging Token Api Account  Account Id  Set Messaging
+                  Token Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Set Messaging Token
+  /api/account/{account_id}/symptoms/week/{week}/lang/{lang}:
+    get:
+      description: Lists articles for a user in a given week.
+      operationId: get_symptoms_api_account__account_id__symptoms_week__week__lang__lang__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: path
+        name: week
+        required: true
+        schema:
+          title: Week
+          type: integer
+      - in: path
+        name: lang
+        required: true
+        schema:
+          title: Lang
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Symptom'
+                title: Response Get Symptoms Api Account  Account Id  Symptoms Week  Week  Lang  Lang  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Symptoms
+  /api/account/{account_id}/todos/week/{week}/day/{day}:
+    get:
+      description: Get all todos for a user in a given week.
+      operationId: get_todos_api_account__account_id__todos_week__week__day__day__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: path
+        name: week
+        required: true
+        schema:
+          title: Week
+          type: integer
+      - in: path
+        name: day
+        required: true
+        schema:
+          title: Day
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Todos'
+                title: Response Get Todos Api Account  Account Id  Todos Week  Week  Day  Day  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Todos
+  /api/account/{account_id}/validate_blood_pressure:
+    post:
+      operationId: validate_blood_pressure_api_account__account_id__validate_blood_pressure_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BloodPressureMeasurement'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BloodPressureMeasurementWithWeek'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Validate Blood Pressure
+  /api/account/{account_id}/validate_blood_sugar:
+    post:
+      operationId: validate_blood_sugar_api_account__account_id__validate_blood_sugar_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BloodSugarMeasurement'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BloodSugarMeasurementWithWeek'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Validate Blood Sugar
+  /api/account/{account_id}/weight_measurements:
+    get:
+      description: Get all weight measurements for a user.
+      operationId: list_weight_measurements_api_account__account_id__weight_measurements_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WeightMeasurementWithWeek'
+                title: Response List Weight Measurements Api Account  Account Id  Weight
+                  Measurements Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: List Weight Measurements
+    post:
+      operationId: add_weight_measurements_api_account__account_id__weight_measurements_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WeightMeasurement'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightMeasurementWithWeek'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Add Weight Measurements
+  /api/account/{account_id}/weight_ranges:
+    get:
+      description: Get acceptable weight gain ranges for a user.
+      operationId: list_weight_ranges_api_account__account_id__weight_ranges_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WeightRangePointWithWeek'
+                title: Response List Weight Ranges Api Account  Account Id  Weight
+                  Ranges Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: List Weight Ranges
+  /api/article/{article_id}/lang/{lang}:
+    get:
+      description: Fetches a single article by ID.
+      operationId: get_article_api_article__article_id__lang__lang__get
+      parameters:
+      - in: path
+        name: article_id
+        required: true
+        schema:
+          title: Article Id
+          type: string
+      - in: path
+        name: lang
+        required: true
+        schema:
+          title: Lang
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get Article
+  /api/login:
+    get:
+      description: Gets or creates user account from the firebase id.
+      operationId: login_api_login_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountWithWeek'
+          description: Successful Response
+      security:
+      - firebase: []
+      summary: Login
+  /api/opt_out:
+    post:
+      operationId: add_opt_out_api_opt_out_post
+      parameters:
+      - in: query
+        name: row_id
+        required: true
+        schema:
+          title: Row Id
+          type: string
+      - in: query
+        name: practice
+        required: true
+        schema:
+          title: Practice
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Add Opt Out Api Opt Out Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - appsheet: []
+      summary: Add Opt Out
+  /api/questionnaire/{questionnaire_id}/questions:
+    get:
+      description: Return the questions for a given provider questionnaire
+      operationId: get_account_questionnaire_api_questionnaire__questionnaire_id__questions_get
+      parameters:
+      - in: path
+        name: questionnaire_id
+        required: true
+        schema:
+          title: Questionnaire Id
+          type: string
+      - in: query
+        name: version
+        required: false
+        schema:
+          title: Version
+          type: string
+      - in: query
+        name: language
+        required: false
+        schema:
+          default: en
+          title: Language
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionnaireQuestions'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get Account Questionnaire
+  /api/redox/endpoint:
+    get:
+      operationId: redox_get_endpoint_api_redox_endpoint_get
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedoxResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - redox: []
+      summary: Redox Get Endpoint
+    post:
+      operationId: redox_post_endpoint_api_redox_endpoint_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedoxResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - redox: []
+      summary: Redox Post Endpoint
+  /api/redox/resume_session:
+    get:
+      operationId: resume_session_api_redox_resume_session_get
+      parameters:
+      - in: query
+        name: uuid
+        required: true
+        schema:
+          title: Uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SsoSession'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Resume Session
+  /api/redox/sso:
+    post:
+      operationId: handle_sso_request_api_redox_sso_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - HTTPBearer: []
+      summary: Handle Sso Request
+  /api/rpm/log_reading:
+    post:
+      operationId: log_rpm_reading_api_rpm_log_reading_post
+      parameters:
+      - in: header
+        name: x-server-signature
+        required: false
+        schema:
+          title: X-Server-Signature
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Log Rpm Reading Api Rpm Log Reading Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Log Rpm Reading
+  /api/set_date_of_birth:
+    post:
+      description: Sets user's date of birth in login table
+      operationId: set_login_user_date_of_birth_api_set_date_of_birth_post
+      parameters:
+      - in: query
+        name: date_of_birth
+        required: true
+        schema:
+          format: date
+          title: Date Of Birth
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginUser'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Set Login User Date Of Birth
+  /api/signup/code:
+    post:
+      operationId: create_singup_code_api_signup_code_post
+      parameters:
+      - in: query
+        name: patient_appsheet_uuid
+        required: true
+        schema:
+          title: Patient Appsheet Uuid
+          type: string
+      - in: query
+        name: practice_id
+        required: true
+        schema:
+          title: Practice Id
+          type: integer
+      - in: query
+        name: language
+        required: false
+        schema:
+          title: Language
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Create Singup Code Api Signup Code Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - appsheet: []
+      summary: Create Singup Code
+  /api/staff/account/{account_id}:
+    delete:
+      operationId: delete_account_api_staff_account__account_id__delete
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Account Api Staff Account  Account Id  Delete
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Delete Account
+  /api/staff/account/{account_id}/interventions:
+    delete:
+      description: Delete interventions
+      operationId: delete_intervention_api_staff_account__account_id__interventions_delete
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIntervention'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Intervention Api Staff Account  Account Id  Interventions
+                  Delete
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Delete Intervention
+    post:
+      description: 'Add intervention to a patient related to a model.
+
+        If intervention is NONE, remove all other interventions.'
+      operationId: add_intervention_api_staff_account__account_id__interventions_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIntervention'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Add Intervention Api Staff Account  Account Id  Interventions
+                  Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Add Intervention
+  /api/staff/account/{account_id}/signup_code:
+    post:
+      operationId: update_code_api_staff_account__account_id__signup_code_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Code Api Staff Account  Account Id  Signup
+                  Code Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Update Code
+  /api/staff/account/{account_id}/update:
+    post:
+      description: Updates one Account
+      operationId: updated_account_api_staff_account__account_id__update_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccount'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAccount'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Updated Account
+  /api/staff/check_provider_email_exist/{email}:
+    get:
+      description: Check if provider email is already registered and return True if
+        yes.
+      operationId: check_provider_email_exist_api_staff_check_provider_email_exist__email__get
+      parameters:
+      - in: path
+        name: email
+        required: true
+        schema:
+          title: Email
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Check Provider Email Exist Api Staff Check Provider
+                  Email Exist  Email  Get
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Check Provider Email Exist
+  /api/staff/device/validate:
+    post:
+      operationId: validate_smart_device_api_staff_device_validate_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemotePatientMonitoringDevice'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Validate Smart Device Api Staff Device Validate Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Validate Smart Device
+  /api/staff/guide/{guide_id}/actions:
+    get:
+      operationId: get_actions_api_staff_guide__guide_id__actions_get
+      parameters:
+      - in: path
+        name: guide_id
+        required: true
+        schema:
+          title: Guide Id
+          type: integer
+      - in: query
+        name: start_date
+        required: false
+        schema:
+          format: date-time
+          title: Start Date
+          type: string
+      - in: query
+        name: end_date
+        required: false
+        schema:
+          format: date-time
+          title: End Date
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/backend__schemas__StaffAction'
+                title: Response Get Actions Api Staff Guide  Guide Id  Actions Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Actions
+  /api/staff/guide/{staff_id}/update:
+    post:
+      description: Returns one Delfina Guides
+      operationId: update_guide_api_staff_guide__staff_id__update_post
+      parameters:
+      - in: path
+        name: staff_id
+        required: true
+        schema:
+          title: Staff Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGuide'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Guide Api Staff Guide  Staff Id  Update Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Update Guide
+  /api/staff/guides:
+    get:
+      description: Returns all Delfina Guides
+      operationId: get_all_guides_api_staff_guides_get
+      parameters:
+      - in: query
+        name: guide_id
+        required: false
+        schema:
+          title: Guide Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Guide'
+                title: Response Get All Guides Api Staff Guides Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get All Guides
+  /api/staff/last_blood_pressure_measurements/{account_id}:
+    get:
+      description: Get last four blood pressure measurments for a user.
+      operationId: get_last_blood_pressure_messurements_api_staff_last_blood_pressure_measurements__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BloodPressureMeasurement'
+                title: Response Get Last Blood Pressure Messurements Api Staff Last
+                  Blood Pressure Measurements  Account Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Last Blood Pressure Messurements
+  /api/staff/last_blood_sugar_measurements/{account_id}:
+    get:
+      description: Get last four blood pressure measurments for a user.
+      operationId: get_last_blood_sugar_measurements_api_staff_last_blood_sugar_measurements__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BloodSugarMeasurement'
+                title: Response Get Last Blood Sugar Measurements Api Staff Last Blood
+                  Sugar Measurements  Account Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Last Blood Sugar Measurements
+  /api/staff/last_mood_measurements/{account_id}:
+    get:
+      description: Get last four blood pressure measurments for a user.
+      operationId: get_last_mood_measurements_api_staff_last_mood_measurements__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MoodMeasurement'
+                title: Response Get Last Mood Measurements Api Staff Last Mood Measurements  Account
+                  Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Last Mood Measurements
+  /api/staff/last_symptoms/{account_id}:
+    get:
+      description: Get symptoms of the last 4 logged weeks.
+      operationId: get_last_week_symptoms_api_staff_last_symptoms__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Symptom'
+                title: Response Get Last Week Symptoms Api Staff Last Symptoms  Account
+                  Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Last Week Symptoms
+  /api/staff/last_weight_measurements/{account_id}:
+    get:
+      description: Get last four blood pressure measurments for a user.
+      operationId: get_last_weight_measurements_api_staff_last_weight_measurements__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WeightMeasurementWithWeek'
+                title: Response Get Last Weight Measurements Api Staff Last Weight
+                  Measurements  Account Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Last Weight Measurements
+  /api/staff/list:
+    get:
+      description: Return list of staffs.
+      operationId: get_all_providers_api_staff_list_get
+      parameters:
+      - in: query
+        name: roles
+        required: false
+        schema:
+          items:
+            type: string
+          title: Roles
+          type: array
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Provider'
+                title: Response Get All Providers Api Staff List Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get All Providers
+  /api/staff/login:
+    get:
+      description: Gets or creates provider from the firebase id.
+      operationId: staff_login_api_staff_login_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+          description: Successful Response
+      security:
+      - firebase: []
+      summary: Staff Login
+  /api/staff/patient/metrics:
+    get:
+      description: 'Returns metrics for one/all patients for `num_weeks` number of
+        weeks
+
+
+        If num_weeks exceeds gestational age, stops at first pregnancy week'
+      operationId: get_patient_metrics_api_staff_patient_metrics_get
+      parameters:
+      - in: query
+        name: patient_id
+        required: false
+        schema:
+          title: Patient Id
+          type: integer
+      - in: query
+        name: num_weeks
+        required: false
+        schema:
+          default: 10
+          title: Num Weeks
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  $ref: '#/components/schemas/PatientMetricInformationByWeek'
+                title: Response Get Patient Metrics Api Staff Patient Metrics Get
+                type: object
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Patient Metrics
+  /api/staff/patient/pod_points:
+    get:
+      description: Calculates and returns the total pod points count for patients
+      operationId: get_pod_points_api_staff_patient_pod_points_get
+      parameters:
+      - in: query
+        name: account_id
+        required: false
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  additionalProperties:
+                    type: integer
+                  type: object
+                title: Response Get Pod Points Api Staff Patient Pod Points Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Pod Points
+  /api/staff/patient/{account_id}/app_login:
+    get:
+      description: Get Patient Login Information for the guide dashboard
+      operationId: get_login_information_api_staff_patient__account_id__app_login_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppLoginGuidePatientInformation'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Login Information
+  /api/staff/patient/{account_id}/review_patient:
+    post:
+      description: Updates the review_time for a patient if reviewed, else resets
+        time to None
+      operationId: review_patient_api_staff_patient__account_id__review_patient_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: review
+        required: true
+        schema:
+          title: Review
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuideViewPatient'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Review Patient
+  /api/staff/patient/{account_id}/update_login_information:
+    post:
+      description: Updates patient login information and returns new data
+      operationId: update_login_information_api_staff_patient__account_id__update_login_information_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAppLoginGuidePatientInformation'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppLoginGuidePatientInformation'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Update Login Information
+  /api/staff/patient/{account_id}/video/add_visit:
+    post:
+      description: Add a patient visit. Note, a 'visit' is a virtual video meeting
+      operationId: add_patient_visit_api_staff_patient__account_id__video_add_visit_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoEngagementData'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Add Patient Visit
+  /api/staff/patient/{account_id}/video/{video_id}/delete_visit:
+    post:
+      description: Delete a video visit
+      operationId: delete_patient_visit_api_staff_patient__account_id__video__video_id__delete_visit_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: path
+        name: video_id
+        required: true
+        schema:
+          title: Video Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Delete Patient Visit Api Staff Patient  Account Id  Video  Video
+                  Id  Delete Visit Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Delete Patient Visit
+  /api/staff/patient/{account_id}/video/{video_id}/update_video_visit:
+    post:
+      description: Updates a video visit and returns new data
+      operationId: update_video_visit_api_staff_patient__account_id__video__video_id__update_video_visit_post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: path
+        name: video_id
+        required: true
+        schema:
+          title: Video Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVideoEngagementData'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoEngagementData'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Update Video Visit
+  /api/staff/patient/{account_id}/videos:
+    get:
+      description: Get Patient Video Information for the guide dashboard
+      operationId: get_patient_videos_api_staff_patient__account_id__videos_get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/VideoEngagementData'
+                title: Response Get Patient Videos Api Staff Patient  Account Id  Videos
+                  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Patient Videos
+  /api/staff/patient/{patient_id}/assign_guide:
+    post:
+      description: Assign a guide to a patient
+      operationId: assign_guide_api_staff_patient__patient_id__assign_guide_post
+      parameters:
+      - in: path
+        name: patient_id
+        required: true
+        schema:
+          title: Patient Id
+          type: integer
+      - in: query
+        name: guide_id
+        required: true
+        schema:
+          title: Guide Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Assign Guide
+  /api/staff/patient/{patient_id}/assign_provider:
+    post:
+      description: Assign a provider to a patient
+      operationId: assign_provider_api_staff_patient__patient_id__assign_provider_post
+      parameters:
+      - in: path
+        name: patient_id
+        required: true
+        schema:
+          title: Patient Id
+          type: integer
+      - in: query
+        name: provider_id
+        required: true
+        schema:
+          title: Provider Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Assign Provider
+  /api/staff/patient/{patient_id}/unassign_guide:
+    post:
+      description: Unassign a guide from a patient
+      operationId: unassign_guide_api_staff_patient__patient_id__unassign_guide_post
+      parameters:
+      - in: path
+        name: patient_id
+        required: true
+        schema:
+          title: Patient Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Unassign Guide
+  /api/staff/patient/{patient_id}/unassign_provider:
+    post:
+      description: Unassign a provider from a patient
+      operationId: unassign_provider_api_staff_patient__patient_id__unassign_provider_post
+      parameters:
+      - in: path
+        name: patient_id
+        required: true
+        schema:
+          title: Patient Id
+          type: integer
+      - in: query
+        name: provider_id
+        required: true
+        schema:
+          title: Provider Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Unassign Provider
+  /api/staff/patient_statistics:
+    get:
+      operationId: get_patients_statistics_api_staff_patient_statistics_get
+      parameters:
+      - in: query
+        name: provider_id
+        required: false
+        schema:
+          title: Provider Id
+          type: integer
+      - in: query
+        name: assigned
+        required: false
+        schema:
+          title: Assigned
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientStatistics'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Patients Statistics
+  /api/staff/patients_count:
+    get:
+      description: 'Returns the number of patients after filtering
+
+
+        Patients can be filtered by guide_id and an engaged flag.
+
+        If engaged is marked True, only engaged patients will be counted
+
+        If False, only disengaged patients will be counted
+
+        If any of the params are None, no filter will be applied'
+      operationId: get_patients_count_api_staff_patients_count_get
+      parameters:
+      - in: query
+        name: guide_id
+        required: false
+        schema:
+          title: Guide Id
+          type: integer
+      - in: query
+        name: engaged
+        required: false
+        schema:
+          title: Engaged
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Get Patients Count Api Staff Patients Count Get
+                type: integer
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Patients Count
+  /api/staff/practices:
+    get:
+      operationId: get_practices_api_staff_practices_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Practice'
+                title: Response Get Practices Api Staff Practices Get
+                type: array
+          description: Successful Response
+      security:
+      - firebase: []
+      summary: Get Practices
+  /api/staff/profile/blood_pressure_measurement/{account_id}:
+    get:
+      description: Get all blood pressure measurments for a specific user during a
+        specific duration.
+      operationId: get_blood_pressure_statistics_api_staff_profile_blood_pressure_measurement__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: from_date
+        required: false
+        schema:
+          format: date
+          title: From Date
+          type: string
+      - in: query
+        name: to_date
+        required: false
+        schema:
+          format: date
+          title: To Date
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BloodPressureMeasurementWithWeek'
+                title: Response Get Blood Pressure Statistics Api Staff Profile Blood
+                  Pressure Measurement  Account Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Blood Pressure Statistics
+  /api/staff/profile/blood_sugar_measurement/{account_id}:
+    get:
+      description: Get all blood sugar measurments for a specific user during a specific
+        duration.
+      operationId: get_blood_sugar_statistics_api_staff_profile_blood_sugar_measurement__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: from_date
+        required: false
+        schema:
+          format: date
+          title: From Date
+          type: string
+      - in: query
+        name: to_date
+        required: false
+        schema:
+          format: date
+          title: To Date
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BloodSugarMeasurementWithWeek'
+                title: Response Get Blood Sugar Statistics Api Staff Profile Blood
+                  Sugar Measurement  Account Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Blood Sugar Statistics
+  /api/staff/profile/mood_measurement/{account_id}:
+    get:
+      description: Get all mood measurments for a specific user during a specific
+        duration.
+      operationId: get_mood_statistics_api_staff_profile_mood_measurement__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: from_date
+        required: false
+        schema:
+          format: date
+          title: From Date
+          type: string
+      - in: query
+        name: to_date
+        required: false
+        schema:
+          format: date
+          title: To Date
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MoodMeasurementWithWeek'
+                title: Response Get Mood Statistics Api Staff Profile Mood Measurement  Account
+                  Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Mood Statistics
+  /api/staff/profile/symptoms/{account_id}:
+    get:
+      operationId: get_symptoms_statistics_api_staff_profile_symptoms__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: from_date
+        required: false
+        schema:
+          format: date
+          title: From Date
+          type: string
+      - in: query
+        name: to_date
+        required: false
+        schema:
+          format: date
+          title: To Date
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Symptom'
+                title: Response Get Symptoms Statistics Api Staff Profile Symptoms  Account
+                  Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Symptoms Statistics
+  /api/staff/profile/weight/{account_id}:
+    get:
+      description: Get all weight measurements for a specific user during a specific
+        duration.
+      operationId: get_weight_statistics_api_staff_profile_weight__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: from_date
+        required: false
+        schema:
+          format: date
+          title: From Date
+          type: string
+      - in: query
+        name: to_date
+        required: false
+        schema:
+          format: date
+          title: To Date
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WeightMeasurementWithWeek'
+                title: Response Get Weight Statistics Api Staff Profile Weight  Account
+                  Id  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Weight Statistics
+  /api/staff/profile/{account_id}:
+    get:
+      description: Get specific patient profile data.
+      operationId: get_patient_profile_api_staff_profile__account_id__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: review_mode
+        required: false
+        schema:
+          $ref: '#/components/schemas/ReviewModeStatus'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientProfile'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Patient Profile
+  /api/staff/provider/patients:
+    post:
+      description: Get all patients data for the admin dashboard.
+      operationId: get_all_patients_api_staff_provider_patients_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatientsFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Patient'
+                title: Response Get All Patients Api Staff Provider Patients Post
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get All Patients
+  /api/staff/provider/questionnaire/{questionnaire_id}/questions:
+    get:
+      description: Return the questions for a given provider questionnaire
+      operationId: get_questionnaire_api_staff_provider_questionnaire__questionnaire_id__questions_get
+      parameters:
+      - in: path
+        name: questionnaire_id
+        required: true
+        schema:
+          title: Questionnaire Id
+          type: string
+      - in: query
+        name: language
+        required: false
+        schema:
+          default: en
+          title: Language
+          type: string
+      - in: query
+        name: version
+        required: false
+        schema:
+          title: Version
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionnaireQuestions'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Questionnaire
+  /api/staff/provider/questionnaire/{questionnaire_id}/response:
+    get:
+      description: 'Return questionnaire / questionnaire metadata for `account_id`
+
+
+        Optionally can filter by questionnaire submitter (provider_id)'
+      operationId: get_questionnaire_response_api_staff_provider_questionnaire__questionnaire_id__response_get
+      parameters:
+      - in: path
+        name: questionnaire_id
+        required: true
+        schema:
+          title: Questionnaire Id
+          type: string
+      - in: query
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: version
+        required: false
+        schema:
+          title: Version
+          type: integer
+      - in: query
+        name: language
+        required: false
+        schema:
+          title: Language
+          type: string
+      - in: query
+        name: provider_id
+        required: false
+        schema:
+          title: Provider Id
+          type: integer
+      - in: query
+        name: full_response
+        required: false
+        schema:
+          default: false
+          title: Full Response
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - items:
+                    $ref: '#/components/schemas/ProviderQuestionnaireResponse'
+                  type: array
+                - items:
+                    $ref: '#/components/schemas/ProviderQuestionnaireResponseMetadata'
+                  type: array
+                title: Response Get Questionnaire Response Api Staff Provider Questionnaire  Questionnaire
+                  Id  Response Get
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Questionnaire Response
+    post:
+      operationId: submit_questionnaire_api_staff_provider_questionnaire__questionnaire_id__response_post
+      parameters:
+      - in: path
+        name: questionnaire_id
+        required: true
+        schema:
+          title: Questionnaire Id
+          type: string
+      - in: query
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: version
+        required: true
+        schema:
+          title: Version
+          type: integer
+      - in: query
+        name: language
+        required: false
+        schema:
+          default: en
+          title: Language
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/QuestionResponse'
+              title: Response
+              type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Submit Questionnaire Api Staff Provider Questionnaire  Questionnaire
+                  Id  Response Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Submit Questionnaire
+  /api/staff/review_mode/status/{status}:
+    get:
+      operationId: get_review_mode_patients_api_staff_review_mode_status__status__get
+      parameters:
+      - in: path
+        name: status
+        required: true
+        schema:
+          $ref: '#/components/schemas/ReviewModeStatus'
+      - in: query
+        name: provider_id
+        required: false
+        schema:
+          title: Provider Id
+          type: integer
+      - in: query
+        name: assigned
+        required: false
+        schema:
+          title: Assigned
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReviewModeAccount'
+                title: Response Get Review Mode Patients Api Staff Review Mode Status  Status  Get
+                type: array
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Review Mode Patients
+  /api/staff/review_patient/{account_id}/{case}:
+    get:
+      description: Add a provider review for a specific patient and case.
+      operationId: review_patient_api_staff_review_patient__account_id___case__get
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: path
+        name: case
+        required: true
+        schema:
+          $ref: '#/components/schemas/ReviewModeStatus'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Review Patient
+  /api/staff/set_account_ehr_id:
+    post:
+      operationId: set_account_ehr_id_api_staff_set_account_ehr_id_post
+      parameters:
+      - in: query
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      - in: query
+        name: ehr_id
+        required: true
+        schema:
+          title: Ehr Id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Set Account Ehr Id Api Staff Set Account Ehr Id Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Set Account Ehr Id
+  /api/staff/set_delivery_date/{account_id}:
+    post:
+      description: Set/Change patient delivery_date
+      operationId: set_patient_delivery_date_api_staff_set_delivery_date__account_id__post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              format: date
+              title: Delivery Date
+              type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Set Patient Delivery Date Api Staff Set Delivery Date  Account
+                  Id  Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Set Patient Delivery Date
+  /api/staff/set_delivery_status/{account_id}:
+    post:
+      description: Set/Change patient delivery_status
+      operationId: set_patient_delivery_status_api_staff_set_delivery_status__account_id__post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryStatus'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Set Patient Delivery Status Api Staff Set Delivery
+                  Status  Account Id  Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Set Patient Delivery Status
+  /api/staff/set_patient_status/{account_id}:
+    post:
+      description: Change patient's status
+      operationId: toggle_patient_api_staff_set_patient_status__account_id__post
+      parameters:
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          title: Account Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountStatus'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Toggle Patient Api Staff Set Patient Status  Account
+                  Id  Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Toggle Patient
+  /api/staff/{provider_id}:
+    get:
+      operationId: get_provider_api_staff__provider_id__get
+      parameters:
+      - in: path
+        name: provider_id
+        required: true
+        schema:
+          title: Provider Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Provider
+  /api/symptoms/{symptom_id}/status/{checked}:
+    post:
+      description: Update user symptom
+      operationId: update_symptom_api_symptoms__symptom_id__status__checked__post
+      parameters:
+      - in: path
+        name: symptom_id
+        required: true
+        schema:
+          title: Symptom Id
+          type: string
+      - in: path
+        name: checked
+        required: true
+        schema:
+          title: Checked
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Update Symptom Api Symptoms  Symptom Id  Status  Checked  Post
+                type: boolean
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Update Symptom
+  /api/todos/{todo_id}/status/{completed}:
+    post:
+      description: Update user todo
+      operationId: update_todo_api_todos__todo_id__status__completed__post
+      parameters:
+      - in: path
+        name: todo_id
+        required: true
+        schema:
+          title: Todo Id
+          type: integer
+      - in: path
+        name: completed
+        required: true
+        schema:
+          title: Completed
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todos'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Update Todo
+  /api/verify_phone_challenge_code:
+    post:
+      description: 'Verifies phone number using code and sid.
+
+
+        This is the first step in the account onboarding flow.
+
+        If the phone number is verified the users LoginUser is
+
+        populated (and created if not already created). If the
+
+        phone number is not verified, the LoginUser is NOT
+
+        populated. On the client users can retry or proceed
+
+        without verifying their phone number.'
+      operationId: verify_phone_challenge_code_api_verify_phone_challenge_code_post
+      parameters:
+      - in: query
+        name: verification_sid
+        required: true
+        schema:
+          title: Verification Sid
+          type: string
+      - in: query
+        name: verification_code
+        required: true
+        schema:
+          title: Verification Code
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginUser'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Verify Phone Challenge Code
+  /graphql:
+    post:
+      operationId: handle_http_post_graphql_post
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      security:
+      - firebase: []
+      summary: Handle Http Post
+  /graphql/persisted:
+    post:
+      operationId: get_persisted_graphql_persisted_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersistedGraphqlQuery'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - firebase: []
+      summary: Get Persisted
