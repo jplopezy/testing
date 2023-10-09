@@ -1,0 +1,109 @@
+Return-path: <mr.adamsibe4@gmail.com>
+Envelope-to: frocha@fysinformatica.com
+Delivery-date: Tue, 31 Aug 2021 08:23:03 -0300
+Received: from [2607:f8b0:4864:20::b42] (helo=mail-yb1-xb42.google.com)
+	by c140.dattaweb.com with esmtps  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.93)
+	(envelope-from <mr.adamsibe4@gmail.com>)
+	id 1mL1r5-000203-5J
+	for frocha@fysinformatica.com; Tue, 31 Aug 2021 08:23:03 -0300
+Received: by mail-yb1-xb42.google.com with SMTP id n126so34120213ybf.6
+        for <frocha@fysinformatica.com>; Tue, 31 Aug 2021 04:23:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:reply-to:from:date:message-id:subject:to
+         :content-transfer-encoding;
+        bh=0YWEn8H+K1Kp3vHp7SbrpAlViHvpgB3LZF53rWG3cHI=;
+        b=XNEOVkpBlCS2yHiN00mjxA4P+8diO+QBSEO8+czAnHRG6e4DSc9CO04AeNhTr1IufA
+         yLyp7jJpdLbhrETFulkVX3wWjWsfAQ2XhZJD6RZrgH1RCJsaX6AUZ3VCVQ1sUICMatRo
+         AUQYEHD3avT31T/2lL7bDeReQDblieCJL8WIvw4mKgCbf0KDIVTajYpz9wTd++im+4Wb
+         rdlD+hGMEPYSYHiy0ympT5EsxlT/4lecNJ1WMKpfq2g+zZyAScsI/nSxeU3iUxN3vpcz
+         r2QlXn5TUWRNyoZg7WIA36IAT3oFkHr7LCJnxycxCRjqbhputQ8Y4mvFCqwzIuiEj3uB
+         HW9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+         :subject:to:content-transfer-encoding;
+        bh=0YWEn8H+K1Kp3vHp7SbrpAlViHvpgB3LZF53rWG3cHI=;
+        b=SCSoRkworvmCqUoHR5dDOZd/7hMVbTC/4Fm27ICS0P5PFslRO2OF1hOItf01aRlQ1o
+         reyRp8cIaS/tfikedwDK1CjIsXxLCPYJNKeSpP5wST7SiqILBy95uyVGUmHuGNUW36pE
+         oB8qOcOFRxpsu9nk6pEurXzysmH3pnCYVKRIuwrvry0k3of8Hyw56FS2EznpcQdva71R
+         hxlbrhuEPV/YcWUVkUN92htswdiZzUocu8ADk4rqbv1Nn2OeD3AGnzclq/QPw5koWqc6
+         Cqg/9B8vJ0Ji9iMPcxdwOYt34m8nVPaxQQLhq9QYyrM8Hg92vnI1WJu1d066PqPewMMm
+         iiaQ==
+X-Gm-Message-State: AOAM531gne3LQzKhzaPL8DGdLYkgTcU11HJny9mX8CNWJeT8m6p5+DIH
+	d/94fjc1ZYNHitXO81/HbeDad9Awq6V9Ot8KcTk=
+X-Google-Smtp-Source: ABdhPJyl3wc9F7MQdS6qjDY/0Hbuoo3jLRveD4v+F/VodgeuwnP6KPG6QWn7+TiNQNmYL/sKovsSCxLX59y/xrmqKVM=
+X-Received: by 2002:a25:27c1:: with SMTP id n184mr29565954ybn.496.1630408981024;
+ Tue, 31 Aug 2021 04:23:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a81:2f0c:0:0:0:0:0 with HTTP; Tue, 31 Aug 2021 04:23:00
+ -0700 (PDT)
+Reply-To: glodris20002@gmail.com
+From: Gloria Drissa <mr.adamsibe4@gmail.com>
+Date: Mon, 30 Aug 2021 23:23:00 -1200
+Message-ID: <CAEXFUmJRLGGtkKC4xMwCu1PFjow4zjiWootaOoEf+DiaUjOJ4g@mail.gmail.com>
+Subject: Saludos de la Sra. Gloria Drissa,
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Bcc: frocha@fysinformatica.com
+X-Spam-Score: 5.2
+X-Spam-Score-Int: 52
+X-Spam-Bar: +++++
+X-Spam-Report: Action: no action
+ Symbol: HAS_REPLYTO(0.00)
+ Symbol: BAYES_SPAM(5.04)
+ Symbol: TO_DN_SOME(0.00)
+ Symbol: R_SPF_ALLOW(-0.20)
+ Symbol: FREEMAIL_FROM(0.00)
+ Symbol: MID_RHS_MATCH_FROMTLD(0.00)
+ Symbol: DKIM_TRACE(0.00)
+ Symbol: RCPT_COUNT_TWO(0.00)
+ Symbol: DMARC_POLICY_ALLOW(-2.00)
+ Symbol: MX_GOOD(0.00)
+ Symbol: FROM_EQ_ENVFROM(0.00)
+ Symbol: MIME_TRACE(0.00)
+ Symbol: FREEMAIL_ENVFROM(0.00)
+ Symbol: ASN(0.00)
+ Symbol: TAGGED_FROM(0.00)
+ Symbol: ARC_NA(0.00)
+ Symbol: R_DKIM_ALLOW(-0.50)
+ Symbol: FROM_HAS_DN(0.00)
+ Symbol: MIME_GOOD(-0.10)
+ Symbol: FREEMAIL_REPLYTO(0.00)
+ Symbol: REPLYTO_DOM_EQ_FROM_DOM(0.00)
+ Symbol: PREVIOUSLY_DELIVERED(0.00)
+ Symbol: TO_MATCH_ENVRCPT_SOME(0.00)
+ Symbol: R_UNDISC_RCPT(3.00)
+ Symbol: RCVD_COUNT_TWO(0.00)
+ Symbol: RCVD_TLS_ALL(0.00)
+ Message-ID: CAEXFUmJRLGGtkKC4xMwCu1PFjow4zjiWootaOoEf+DiaUjOJ4g@mail.gmail.com
+
+--=20
+
+
+El m=C3=A1s querido,
+
+Mi nombre es La Se=C3=B1ora Gloria Drissa de Georgia en estados Unidos de
+Am=C3=A9rica. Me diagnosticaron C=C3=A1ncer de P=C3=A1ncreas que el m=C3=A9=
+dico me ha
+confirmado que no durar=C3=A9 en esta tierra a causa de esta enfermedad mor=
+tal,
+as=C3=AD que quiero donar toda mi herencia para la obra de Dios para mostra=
+r
+gratitud a Dios Todopoderoso por los privilegiados que me ha dado en t su
+vida.
+
+En este momento, tengo un fondo de herencia de mi difunto esposo que suma
+la suma de $7,500,000.00 que mi difunto esposo deposit=C3=B3 en el Banco de
+Am=C3=A9rica y estoy dispuesto a donar este fondo para el trabajo de carida=
+d. En
+la actualidad he sido admitido en el hospital, as=C3=AD que amablemente p=
+=C3=B3ngase
+en contacto conmigo para que pueda darle m=C3=A1s detalles sobre c=C3=B3mo =
+puede
+recibir el fondo para esta gran obra de caridad.
+
+Que Dios Todopoderoso bendiga.
+La se=C3=B1ora Gloria Drissa.
