@@ -1,4 +1,8 @@
 {
+  "name": "cve-check",
+  "version": "1.0.0",
+  "description": "Proyecto para verificar vulnerabilidades en dependencias",
+  "dependencies": {
   "@apollo/client": "^3.8.7",
   "@elastic/apm-rum-vue": "^2.0.1",
   "@qu-beyond/connections": "^0.1.2",
@@ -665,4 +669,5 @@
   "vue-template-compiler": "^2.6.14",
   "webpack": "^4.46.0",
   "yorkie": "^2.0.0"
+  }
 }
