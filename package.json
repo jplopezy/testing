@@ -304,7 +304,7 @@
   "customize-cra": "^1.0.0",
   "expo": "^47.0.8",
   "expo-av": "~13.0.2",
-  "expo-constants": "~14.0.2",
+  "expo-constants": "~14.4.1",
   "expo-device": "~5.0.0",
   "expo-file-system": "~15.1.1",
   "expo-firebase-analytics": "~8.0.0",
