@@ -332,7 +332,7 @@
   "react-app-rewired": "^2.2.1",
   "react-art": "18.2.0",
   "react-dom": "18.1.0",
-  "react-native": "0.70.5",
+  "react-native": "0.74.0",
   "react-native-autoheight-webview": "^1.6.5",
   "react-native-flash-message": "^0.3.1",
   "react-native-gesture-handler": "~2.8.0",
