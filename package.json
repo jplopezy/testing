@@ -217,7 +217,7 @@
   "escape-html": "^1.0.3",
   "graphql": "^14.5.8",
   "is-electron": "^2.2.1",
-  "nuxt": "^2.15.2",
+  "nuxt": "^3.12.4",
   "nuxt-buefy": "^0.4.23",
   "roarr": "^7.11.0",
   "serialize-error": "9.1.0",
